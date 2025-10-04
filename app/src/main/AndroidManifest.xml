@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools">
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission
+            android:name="android.permission.WRITE_EXTERNAL_STORAGE"
+            android:maxSdkVersion="28" />
+
+    <uses-feature
+            android:name="android.hardware.camera"
+            android:required="false" />
+
+    <meta-data
+            android:name="com.google.android.gms.version"
+            android:value="@integer/google_play_services_version" />
+
+    <application
+            android:allowBackup="true"
+            android:dataExtractionRules="@xml/data_extraction_rules"
+            android:fullBackupContent="@xml/backup_rules"
+            android:icon="@drawable/login"
+            android:label="@string/app_name"
+            android:roundIcon="@drawable/login"
+            android:supportsRtl="true"
+            android:theme="@style/Theme.Reportes"
+            tools:targetApi="31">
+        <activity
+                android:name=".ui.usuario.EstablecerPasswordActivity"
+                android:exported="false" />
+        <activity
+                android:name=".ui.usuario.AcercaDeActivity"
+                android:exported="false" />
+        <activity
+                android:name=".ui.administrador.ResumenActivity"
+                android:exported="false" />
+        <activity
+                android:name=".ui.administrador.EditarActivity"
+                android:exported="false" />
+        <activity
+                android:name=".ui.responsable.DetalleReporteAsignadoActivity"
+                android:exported="false" />
+        <activity
+                android:name=".ui.administrador.InformacionActivity"
+                android:exported="false" />
+        <activity
+                android:name=".ui.responsable.ReportecerradoActivity"
+                android:exported="false" />
+        <activity
+                android:name=".ui.administrador.AsignarActivity"
+                android:exported="false" />
+        <activity
+                android:name=".ui.administrador.DetallesActivity"
+                android:exported="false" />
+        <activity
+                android:name=".ui.usuario.ConfiguracionActivity"
+                android:exported="false" />
+        <activity
+                android:name=".ui.usuario.ReporteActivity"
+                android:exported="false" />
+        <activity
+                android:name=".ui.usuario.PrincipalActivity"
+                android:exported="false" />
+        <activity
+                android:name=".ui.usuario.RegistrarActivity"
+                android:exported="false" />
+        <activity
+                android:name=".ui.ReportesEstadoActivity"
+                android:exported="false" />
+        <activity
+                android:name=".ui.usuario.SplashActivity"
+                android:exported="true"
+                android:theme="@style/SplashTheme">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+                android:name=".ui.usuario.MainActivity"
+                android:exported="true"></activity>
+
+        <provider
+                android:name="androidx.core.content.FileProvider"
+                android:authorities="${applicationId}.fileprovider"
+                android:exported="false"
+                android:grantUriPermissions="true">
+            <meta-data
+                    android:name="android.support.FILE_PROVIDER_PATHS"
+                    android:resource="@xml/file_paths" />
+        </provider>
+    </application>
+
+</manifest>

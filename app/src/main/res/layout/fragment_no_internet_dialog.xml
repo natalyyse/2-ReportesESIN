@@ -1,0 +1,37 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#C8F8F5F5">
+
+        <LinearLayout
+                android:orientation="vertical"
+                android:gravity="center"
+                android:layout_gravity="center"
+                android:padding="24dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:elevation="8dp"
+                android:layout_margin="32dp">
+
+                <ProgressBar
+                     android:id="@+id/progressBar"
+                     style="?android:attr/progressBarStyleLarge"
+                     android:layout_width="64dp"
+                     android:layout_height="64dp"
+                     android:indeterminate="true"
+                     android:indeterminateTint="@color/colorAccent"
+                     android:visibility="visible" />
+
+                <!-- Texto debajo -->
+                <TextView
+                        android:layout_marginTop="16dp"
+                        android:text="Sin conexión a Internet"
+                        android:textSize="18sp"
+                        android:textStyle="bold"
+                        android:textColor="@android:color/black"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"/>
+        </LinearLayout>
+
+</FrameLayout>
+

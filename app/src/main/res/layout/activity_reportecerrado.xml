@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/main"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".ui.responsable.ReportecerradoActivity"
+        android:background="@color/white">
+
+        <LinearLayout
+                android:orientation="vertical"
+                android:padding="20dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent">
+
+            <!-- Header -->
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:layout_marginBottom="24dp">
+
+                <ImageButton
+                    android:id="@+id/btnBack"
+                    android:layout_width="48dp"
+                    android:layout_height="48dp"
+                    android:background="?attr/selectableItemBackgroundBorderless"
+                    android:src="@drawable/outline_arrow_back_24"
+                    android:contentDescription="Volver" />
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="40dp"
+                    android:text="Cerrar Reporte"
+                    android:textStyle="bold"
+                    android:textSize="20sp"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:textColor="@color/textBlack"
+                    android:layout_marginEnd="48dp" />
+            </LinearLayout>
+            <!-- Comentario de cierre -->
+            <TextView
+                android:text="Comentario u observación"
+                android:textStyle="bold"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="2dp"    />
+
+            <EditText
+                android:id="@+id/etComentarioCierre"
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                android:hint="Comentario u observación"
+                android:background="#EDEDED"
+                android:gravity="top"
+                android:padding="12dp"
+                android:layout_marginBottom="24dp"
+                android:layout_marginTop="10dp"/>
+
+            <!-- Subir imagen -->
+            <TextView
+                android:text="Subir evidencia"
+                android:textStyle="bold"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+            <LinearLayout
+                    android:layout_marginTop="10dp"
+                    android:id="@+id/archivoLayout"
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
+                    android:background="#EDEDED"
+                    android:gravity="center_vertical"
+                    android:paddingStart="12dp"
+                    android:paddingEnd="12dp"
+                    android:layout_marginBottom="24dp">
+
+                <TextView
+                        android:id="@+id/archivoNombre"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="Nombre del archivo"
+                        android:textColor="#888" />
+
+                <ImageView
+                        android:id="@+id/ivPreview"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:layout_marginEnd="8dp"
+                        android:scaleType="centerCrop"
+                        android:background="@drawable/spinner_bg"
+                        android:src="@drawable/ic_image_placeholder" />
+
+                <ImageView
+                        android:id="@+id/archivoIcon"
+                        android:layout_width="24dp"
+                        android:layout_height="24dp"
+                        android:src="@drawable/ic_upload" />
+            </LinearLayout>
+
+            <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btnCerrarReporte"
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
+                    android:text="Cerrar Reporte"
+                    android:textColor="@color/white"
+                    app:cornerRadius="12dp"
+                    app:backgroundTint="@color/colorAccent"/>
+
+        </LinearLayout>
+
+    <View
+        android:id="@+id/progressBackground"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#62FFFFFF"
+        android:visibility="gone"
+        android:elevation="4dp"/>
+
+    <ProgressBar
+        android:id="@+id/progressBar"
+        style="?android:attr/progressBarStyleLarge"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
+</androidx.constraintlayout.widget.ConstraintLayout>

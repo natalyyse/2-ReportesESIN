@@ -1,0 +1,215 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:id="@+id/main"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/white"
+        tools:context=".ui.usuario.ReporteActivity">
+
+    <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+        <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="24dp">
+
+            <!-- Fila para flecha y título -->
+            <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:layout_marginBottom="24dp">
+
+                <ImageButton
+                        android:id="@+id/btnBack"
+                        android:layout_width="48dp"
+                        android:layout_height="48dp"
+                        android:background="?attr/selectableItemBackgroundBorderless"
+                        android:src="@drawable/outline_arrow_back_24"
+                        android:contentDescription="Regresar"
+                        android:padding="8dp"
+                        android:layout_marginStart="-12dp"/>
+
+                <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="40dp"
+                        android:layout_weight="1"
+                        android:text="Datos Generales"
+                        android:textStyle="bold"
+                        android:textSize="25sp"
+                        android:gravity="center"
+                        android:textColor="@color/textBlack"/>
+
+                <!-- Espacio invisible para balancear -->
+                <View
+                        android:layout_width="48dp"
+                        android:layout_height="48dp" />
+            </LinearLayout>
+
+            <!-- Subtítulo -->
+            <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="TIPO DE HALLAZGO"
+                    android:textStyle="bold"
+                    android:textSize="12sp"
+                    android:textColor="#888"
+                    android:layout_marginBottom="8dp" />
+
+            <!-- Spinner Tipo de Hallazgo -->
+            <Spinner
+                    android:id="@+id/spinnerTipo"
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
+                    android:background="@drawable/spinner_bg"
+                    android:layout_marginBottom="24dp" />
+
+            <!-- Etiqueta Descripción -->
+            <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="DESCRIPCIÓN"
+                    android:textStyle="bold"
+                    android:textSize="12sp"
+                    android:textColor="#888"
+                    android:layout_marginBottom="8dp" />
+
+            <!-- Campo Descripción -->
+            <EditText
+                    android:id="@+id/etDescripcion"
+                    android:layout_width="match_parent"
+                    android:layout_height="100dp"
+                    android:hint="Descripción:"
+                    android:background="#EDEDED"
+                    android:gravity="top"
+                    android:padding="12dp"
+                    android:layout_marginBottom="24dp" />
+
+            <!-- Etiqueta Archivo -->
+            <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="ARCHIVO ADJUNTO"
+                    android:textStyle="bold"
+                    android:textSize="12sp"
+                    android:textColor="#888"
+                    android:layout_marginBottom="8dp" />
+
+            <!-- Seleccionar archivo -->
+            <LinearLayout
+                    android:id="@+id/archivoLayout"
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
+                    android:background="#EDEDED"
+                    android:gravity="center_vertical"
+                    android:paddingStart="12dp"
+                    android:paddingEnd="12dp"
+                    android:layout_marginBottom="24dp">
+
+                <TextView
+                        android:id="@+id/archivoNombre"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="Nombre del archivo"
+                        android:textColor="#888" />
+
+                <ImageView
+                        android:id="@+id/archivoPreview"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:layout_marginEnd="8dp"
+                        android:scaleType="centerCrop"
+                        android:background="@drawable/spinner_bg"
+                        android:src="@drawable/ic_image_placeholder" />
+
+                <ImageView
+                        android:id="@+id/archivoIcon"
+                        android:layout_width="24dp"
+                        android:layout_height="24dp"
+                         />
+            </LinearLayout>
+
+            <!-- Etiqueta Lugar -->
+            <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="LUGAR ESPECÍFICO"
+                    android:textStyle="bold"
+                    android:textSize="12sp"
+                    android:textColor="#888"
+                    android:layout_marginBottom="8dp" />
+
+            <!-- Lugar específico -->
+            <EditText
+                    android:id="@+id/etLugar"
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
+                    android:hint="Lugar específico:"
+                    android:background="#EDEDED"
+                    android:padding="12dp"
+                    android:layout_marginBottom="24dp" />
+
+            <!-- Etiqueta Nombre -->
+            <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="NOMBRE DEL REPORTANTE"
+                    android:textStyle="bold"
+                    android:textSize="12sp"
+                    android:textColor="#888"
+                    android:layout_marginBottom="8dp" />
+
+            <!-- Nombre del reportante -->
+            <EditText
+                    android:id="@+id/etNombre"
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
+                    android:hint="Nombre del reportante"
+                    android:background="#EDEDED"
+                    android:padding="12dp"
+                    android:layout_marginBottom="32dp" />
+
+            <!-- Botón Enviar -->
+            <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btnEnviar"
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
+                    android:text="Enviar"
+                    android:backgroundTint="@color/colorAccent"
+                    android:textColor="@android:color/white"
+                    android:textStyle="bold"
+                    android:gravity="center"/>
+
+        </LinearLayout>
+
+    </ScrollView>
+
+    <View
+            android:id="@+id/progressBackground"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="#62FFFFFF"
+            android:visibility="gone"
+            android:elevation="4dp"/>
+
+    <ProgressBar
+            android:id="@+id/progressBar"
+            style="?android:attr/progressBarStyleLarge"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:visibility="gone"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

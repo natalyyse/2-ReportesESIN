@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!-- Ítems principales arriba -->
+    <group android:id="@+id/group_principal">
+        <item
+                android:id="@+id/nav_reporte"
+                android:icon="@drawable/ic_reporte"
+                android:title="Reporte"/>
+        <item
+                android:id="@+id/nav_levantamiento"
+                android:icon="@drawable/ic_levantamiento"
+                android:title="Levantamiento de\nreportes"/>
+        <item
+                android:id="@+id/nav_administracion"
+                android:icon="@drawable/ic_administracion"
+                android:title="Administración"/>
+        <item
+                android:id="@+id/nav_resumen"
+                android:icon="@drawable/ic_reporte"
+                android:title="Resumen"/>
+
+    </group>
+
+
+    <!-- Ítems inferiores debajo de la línea separadora -->
+    <group android:id="@+id/group_bottom" android:checkableBehavior="none">
+        <item
+                android:id="@+id/nav_configuracion"
+                android:icon="@drawable/ic_configuracion"
+                android:title="Ajuste"/>
+        <item
+                android:id="@+id/nav_logout"
+                android:icon="@drawable/ic_cerrar_sesion"
+                android:title="Cerrar sesión"/>
+    </group>
+</menu>

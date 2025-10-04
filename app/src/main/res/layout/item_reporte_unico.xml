@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:padding="20dp"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/bg_card"
+    android:layout_marginBottom="12dp"
+    android:elevation="2dp">
+
+    <!-- Primera fila: Tipo de hallazgo a la izquierda, área de estado a la derecha -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:layout_marginBottom="10dp">
+
+        <!-- Título del tipo de hallazgo -->
+        <TextView
+            android:id="@+id/tvTipoHallazgo"
+            android:textStyle="bold"
+            android:textSize="20sp"
+            android:textColor="#222222"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"/>
+
+        <!-- Contenedor vertical para estado y esfera -->
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:gravity="center">
+
+            <!-- Estado (Asignado/Cerrado parcial) -->
+            <TextView
+                android:id="@+id/tvEstado"
+                android:textStyle="bold"
+                android:textSize="17sp"
+                android:textColor="#1976D2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"/>
+
+            <!-- Círculo de riesgo centrado exactamente debajo del estado -->
+            <View
+                android:id="@+id/circleNivelRiesgo"
+                android:layout_width="18dp"
+                android:layout_height="18dp"
+                android:layout_gravity="center"
+                android:layout_marginTop="6dp"/>
+        </LinearLayout>
+    </LinearLayout>
+
+    <!-- Segunda fila: información del reportante -->
+    <TextView
+        android:id="@+id/tvNombreReportante"
+        android:textSize="17sp"
+        android:textColor="#444444"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:maxLines="2"
+        android:ellipsize="end"/>
+
+    <!-- Tercera fila: fechas -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <!-- Campos de fecha -->
+        <TextView
+            android:id="@+id/tvFecha"
+            android:textSize="16sp"
+            android:textColor="#666666"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:visibility="gone"/>
+
+        <TextView
+            android:id="@+id/tvFechaLimite"
+            android:textSize="16sp"
+            android:textColor="#666666"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:visibility="gone"/>
+    </LinearLayout>
+</LinearLayout>

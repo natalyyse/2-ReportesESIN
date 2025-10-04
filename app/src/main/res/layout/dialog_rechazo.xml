@@ -1,0 +1,26 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:padding="24dp"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <EditText
+        android:id="@+id/etMotivo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Motivo del rechazo"
+        android:inputType="textMultiLine"
+        android:minLines="2"
+        android:layout_marginBottom="12dp"/>
+
+    <EditText
+        android:id="@+id/etFechaLimite"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Seleccionar nueva fecha límite"
+        android:focusable="false"
+        android:clickable="true"
+        android:drawableEnd="@android:drawable/ic_menu_my_calendar"
+        android:drawablePadding="8dp"
+        android:layout_marginBottom="12dp"/>
+</LinearLayout>

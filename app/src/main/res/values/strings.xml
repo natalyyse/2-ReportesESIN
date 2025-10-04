@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">Reportes</string>
+    <string name="default_web_client_id">1062495260580-4njc345tkvhnrj1tuna2ltrj222eduei.apps.googleusercontent.com</string>
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="descripcion_app">
+        Reportes ESIN es una aplicación orientada a la gestión eficiente de incidencias dentro de la comunidad ESIN.
+        Permite a los usuarios reportar, asignar, levantar y cerrar reportes de manera ágil y segura, facilitando el
+        seguimiento y la resolución de incidencias según los roles de usuario. Además, esta herramienta contribuye a
+        la mejora continua de los procesos internos y fomenta una comunicación más efectiva entre todos los miembros
+        de la organización.
+    </string>
+</resources>
