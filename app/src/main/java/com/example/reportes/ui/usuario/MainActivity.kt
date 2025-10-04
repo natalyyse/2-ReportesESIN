@@ -120,6 +120,33 @@ class MainActivity : BaseActivity() {
         googleSignInClient = GoogleSignIn.getClient(this, gso)
     }
 
+    // --- Resultado de Google Sign-In ---
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        if (requestCode == RC_SIGN_IN) {
+            try {
+                val task = GoogleSignIn.getSignedInAccountFromIntent(data)
+                val account = task.getResult(ApiException::class.java)
+                
+                // Verificamos que el account y el token no sean nulos
+                if (account != null && account.idToken != null) {
+                    // La validación de existencia y vinculación con Google se hace en el repositorio
+                    viewModel.signInWithGoogle(account)
+                } else {
+                    showLoading(false)
+                    blockButtonWithToast("No se pudo obtener la información de Google.")
+                    googleSignInClient.signOut()
+                }
+            } catch (e: ApiException) {
+                showLoading(false)
+                blockButtonWithToast("Error al iniciar sesión con Google: ${e.localizedMessage}")
+                Log.w("LoginGoogle", "Google sign in failed", e)
+            }
+        } else {
+            showLoading(false)
+        }
+    }
+
     // --- Observador del ViewModel ---
     private fun observeViewModel() {
         viewModel.authResult.observe(this, Observer { result ->
@@ -161,33 +188,6 @@ class MainActivity : BaseActivity() {
         googleSignInClient.signOut().addOnCompleteListener {
             val signInIntent = googleSignInClient.signInIntent
             startActivityForResult(signInIntent, RC_SIGN_IN)
-        }
-    }
-
-    // --- Resultado de Google Sign-In ---
-    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-        super.onActivityResult(requestCode, resultCode, data)
-        if (requestCode == RC_SIGN_IN) {
-            try {
-                val task = GoogleSignIn.getSignedInAccountFromIntent(data)
-                val account = task.getResult(ApiException::class.java)
-                
-                // Verificamos que el account y el token no sean nulos
-                if (account != null && account.idToken != null) {
-                    // La validación de existencia y vinculación con Google se hace en el repositorio
-                    viewModel.signInWithGoogle(account)
-                } else {
-                    showLoading(false)
-                    blockButtonWithToast("No se pudo obtener la información de Google.")
-                    googleSignInClient.signOut()
-                }
-            } catch (e: ApiException) {
-                showLoading(false)
-                blockButtonWithToast("Error al iniciar sesión con Google: ${e.localizedMessage}")
-                Log.w("LoginGoogle", "Google sign in failed", e)
-            }
-        } else {
-            showLoading(false)
         }
     }
 

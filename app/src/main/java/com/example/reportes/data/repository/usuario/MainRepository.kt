@@ -51,37 +51,20 @@ class MainRepository(private val context: Context) {
             return
         }
 
-        // Verificar primero si hay métodos de inicio de sesión asociados a este correo
-        firebaseAuth.fetchSignInMethodsForEmail(email)
-            .addOnSuccessListener { result ->
-                val signInMethods = result.signInMethods ?: listOf()
-                
-                // Si hay métodos de inicio de sesión que no incluyen Google pero incluyen password
-                if (signInMethods.isNotEmpty() && !signInMethods.contains("google.com") && 
-                    signInMethods.contains("password")) {
-                    // El usuario existe pero con otro proveedor
-                    callback.onError("Este correo ya está registrado con correo y contraseña. Por favor inicie sesión con ese método.")
-                    return@addOnSuccessListener
+        // Intentamos autenticar directamente con Google
+        val credential = GoogleAuthProvider.getCredential(account.idToken, null)
+        firebaseAuth.signInWithCredential(credential)
+            .addOnCompleteListener { task ->
+                if (task.isSuccessful && firebaseAuth.currentUser != null) {
+                    // La autenticación fue exitosa, ahora verificamos si existe en Firestore
+                    checkUserExistsInFirestore(firebaseAuth.currentUser!!, callback)
+                } else {
+                    // Error al autenticar
+                    val errorMsg = task.exception?.localizedMessage ?: "Error desconocido"
+                    callback.onError("Error al iniciar sesión con Google: $errorMsg")
+                    // Si hubo un intento de autenticación, asegurarse de cerrar sesión
+                    firebaseAuth.signOut()
                 }
-                
-                // Si llegamos aquí, podemos intentar autenticarnos con Google
-                val credential = GoogleAuthProvider.getCredential(account.idToken, null)
-                firebaseAuth.signInWithCredential(credential)
-                    .addOnCompleteListener { task ->
-                        if (task.isSuccessful && firebaseAuth.currentUser != null) {
-                            // La autenticación fue exitosa, ahora verificamos si existe en Firestore
-                            checkUserExistsInFirestore(firebaseAuth.currentUser!!, callback)
-                        } else {
-                            // Error al autenticar
-                            val errorMsg = task.exception?.localizedMessage ?: "Error desconocido"
-                            callback.onError("Error al iniciar sesión con Google: $errorMsg")
-                            // Si hubo un intento de autenticación, asegurarse de cerrar sesión
-                            firebaseAuth.signOut()
-                        }
-                    }
-            }
-            .addOnFailureListener {
-                callback.onError("Error al verificar el método de inicio de sesión: ${it.localizedMessage}")
             }
     }
 
@@ -105,7 +88,7 @@ class MainRepository(private val context: Context) {
                     callback.onSuccess(userProfile)
                 } else {
                     // Usuario no existe en Firestore aunque se autenticó con Google
-                    // Cerramos sesión y notificamos
+                    // Esto sucede cuando un usuario se autenticó con Google pero no tiene documento en Firestore
                     callback.onError("No existe una cuenta completa con este correo. Por favor regístrese primero.")
                     firebaseAuth.signOut()
                 }
